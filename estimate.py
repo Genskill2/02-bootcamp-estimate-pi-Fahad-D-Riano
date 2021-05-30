@@ -30,3 +30,34 @@ class TestMC(unittest.TestCase):
     
 if __name__ == "__main__":
     unittest.main()
+
+def wallis(n):
+    halfpi=1.0
+    for i in range(1,n):
+        numo=i*2
+        deno=i*2-1
+        halfpi=halfpi *(numo*numo) /(deno *(deno + 2))
+    return(2.0*halfpi)
+  
+      
+    
+import random
+def monte_carlo(n):
+    cirpts=0
+    sqrpts=0
+
+    for i in range(n**2):
+     rx=random.uniform(-1, 1)
+     ry=random.uniform(-1, 1)
+
+     og_dist=rx**2 + ry**2
+
+     if og_dist<=1:
+        cirpts+=1
+    sqrpts+=1
+
+    
+    pi = 4* cirpts/ sqrpts 
+    return pi
+
+
