@@ -33,10 +33,9 @@ if __name__ == "__main__":
 
 def wallis(n):
     halfpi=1.0
-    for i in range(1,n):
-        numo=i*2
-        deno=i*2-1
-        halfpi=halfpi *(numo*numo) /(deno *(deno + 2))
+    for i in range(1, n+1):
+        d=4.0*(i*i)
+        halfpi *= d/(d-1)
     return(2.0*halfpi)
   
       
@@ -44,20 +43,20 @@ def wallis(n):
 import random
 def monte_carlo(n):
     cirpts=0
-    sqrpts=0
+    
 
-    for i in range(n**2):
-     rx=random.uniform(-1, 1)
-     ry=random.uniform(-1, 1)
+    for i in range(1, n+1):
+     rx=random.random()*random.randrange(-1,2,2)
+     ry=random.random()*random.randrange(-1,2,2)
 
      og_dist=rx**2 + ry**2
 
      if og_dist<=1:
         cirpts+=1
-    sqrpts+=1
+    
 
     
-    pi = 4* cirpts/ sqrpts 
+    pi = 4* cirpts/ n 
     return pi
 
 
